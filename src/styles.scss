@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   // variables
+  --tarnsition-duration: 300ms;
 
   //neutral colors
   --cool-gray: hsl(231, 11%, 63%);
@@ -13,7 +14,8 @@
   --marine-blue: hsl(213, 96%, 18%);
   --purplish-blue: hsl(243, 100%, 62%);
   --pastel-blue: hsl(228, 100%, 84%);
-  --light-blue: hsl(206, 94%, 87%);
+  //--light-blue: hsl(206, 94%, 87%);
+  --light-blue: hsl(215, 100%, 97%);
   --strawberry-red: hsl(354, 84%, 57%);
 }
 
@@ -38,5 +40,12 @@
 body {
   font-size: 16px;
   font-family: "Ubuntu", sans-serif;
+  color: var(--cool-gray);
   margin: 0;
+}
+
+h3 {
+  font-size: 1.75rem;
+  margin-block: 0.6em;
+  color: var(--marine-blue);
 }

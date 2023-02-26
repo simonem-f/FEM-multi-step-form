@@ -1,7 +1,6 @@
 // PAGE LAYOUT
 .container {
   display: grid;
-  padding: 1rem;
   min-height: 100dvh;
   grid-auto-rows: auto 1fr auto;
   grid-template-areas:
@@ -42,6 +41,7 @@ aside.side-steps {
 
     &.active .step-number {
       background-color: var(--light-blue);
+      transition: background var(--tarnsition-duration);
       color: var(--marine-blue);
       border: none;
     }
@@ -64,16 +64,29 @@ aside.side-steps {
 // STEP FORMS
 section.form-section {
   grid-area: form;
+  padding-inline: 1rem;
 }
 
 // STEP CONTROLS
 section.form-controls {
   grid-area: controls;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 // MEDIA QUERIES
 // DESKTOP
 @media screen and (width >= 600px) {
+  .container {
+    grid-auto-columns: auto 1fr;
+    grid-auto-rows: 1fr auto;
+    grid-template-areas:
+      "steps form"
+      "steps controls";
+    padding: 1rem;
+  }
+
   aside.side-steps {
     width: clamp(230px, 20vw + 5rem, 280px);
     padding: 2rem;
@@ -92,18 +105,24 @@ section.form-controls {
     }
   }
 
-  .container {
-    grid-auto-columns: auto 1fr;
-    grid-template-areas:
-      "steps form"
-      "steps controls";
+  section {
+    width: min(100%, 750px);
+    margin-inline: auto;
+
+    .form-step {
+      padding-block-start: 1rem;
+    }
   }
 }
 
 //MOBILE
 @media screen and (width < 600px) {
+  .container {
+    background-color: var(--light-blue);
+  }
+
   aside.side-steps {
-    padding-block: 3rem 8rem;
+    padding-block: 2rem 8rem;
 
     .step-label {
       display: none;
@@ -111,6 +130,17 @@ section.form-controls {
   }
 
   section.form-section {
-    margin-top: -5rem;
+    margin-top: -5.25rem;
+
+    .form-step {
+      background-color: var(--white);
+      padding: 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px -3px rgba(120, 120, 120, 0.2);
+    }
+  }
+
+  section.form-controls {
+    background-color: var(--white);
   }
 }

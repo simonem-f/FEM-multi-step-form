@@ -1,7 +1,9 @@
 // PAGE LAYOUT
-.container {
+.multi-step-container {
   display: grid;
   min-height: 100dvh;
+  max-width: 1440px;
+  margin-inline: auto;
   grid-auto-rows: auto 1fr auto;
   grid-template-areas:
     "steps"
@@ -77,8 +79,8 @@ section.form-controls {
 
 // MEDIA QUERIES
 // DESKTOP
-@media screen and (width >= 600px) {
-  .container {
+@media screen and (width >= 700px) {
+  .multi-step-container {
     grid-auto-columns: auto 1fr;
     grid-auto-rows: 1fr auto;
     grid-template-areas:
@@ -116,8 +118,8 @@ section.form-controls {
 }
 
 //MOBILE
-@media screen and (width < 600px) {
-  .container {
+@media screen and (width < 700px) {
+  .multi-step-container {
     background-color: var(--light-blue);
   }
 

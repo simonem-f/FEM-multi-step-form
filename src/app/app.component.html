@@ -1,4 +1,4 @@
-<div class="container">
+<div class="multi-step-container">
   <aside class="side-steps">
     <div class="side-step active">
       <div class="step-number"></div>
@@ -31,75 +31,96 @@
   </aside>
 
   <section class="form-section">
-    <c-carousel transition="slide" [animate]="false" [interval]="0">
-      <c-carousel-inner>
-        <c-carousel-item>
-          <div class="form-step">
-            <h3>Personal info</h3>
-            <p class="sub-headings">
-              Please provide your name, email address, and phone number.
-            </p>
-            <!-- form -->
-          </div>
-        </c-carousel-item>
+    <ngb-carousel
+      [keyboard]="false"
+      [interval]="0"
+      [showNavigationArrows]="false"
+      [showNavigationIndicators]="false"
+      (slid)="onSlideEnd()"
+      (slide)="onSlideStart()"
+    >
+      <ng-template ngbSlide>
+        <div class="form-step">
+          <h3>Personal info</h3>
+          <p class="sub-headings">
+            Please provide your name, email address, and phone number.
+          </p>
+          <!-- form -->
+        </div>
+      </ng-template>
 
-        <c-carousel-item>
-          <div class="form-step">
-            <h3>Select your plan</h3>
-            <p class="sub-headings">
-              You have the option of monthly or yearly billing.
-            </p>
-            <!-- form -->
-          </div>
-        </c-carousel-item>
+      <ng-template ngbSlide>
+        <div class="form-step">
+          <h3>Select your plan</h3>
+          <p class="sub-headings">
+            You have the option of monthly or yearly billing.
+          </p>
+          <!-- form -->
+        </div>
+      </ng-template>
 
-        <c-carousel-item>
-          <div class="form-step">
-            <h3>Pick add-ons</h3>
-            <p class="sub-headings">
-              Add-ons help enhance your gaming experience.
-            </p>
-            <!-- form -->
-          </div>
-        </c-carousel-item>
+      <ng-template ngbSlide>
+        <div class="form-step">
+          <h3>Pick add-ons</h3>
+          <p class="sub-headings">
+            Add-ons help enhance your gaming experience.
+          </p>
+          <!-- form -->
+        </div>
+      </ng-template>
 
-        <c-carousel-item>
-          <div class="form-step">
-            <h3>Finishing up</h3>
-            <p class="sub-headings">
-              Double-check everything looks OK before confirming.
-            </p>
-            <!-- form -->
-          </div>
-        </c-carousel-item>
+      <ng-template ngbSlide>
+        <div class="form-step">
+          <h3>Finishing up</h3>
+          <p class="sub-headings">
+            Double-check everything looks OK before confirming.
+          </p>
+          <!-- form -->
+        </div>
+      </ng-template>
 
-        <c-carousel-item>
-          <div class="form-step final">
-            <!-- icon -->
-            <h3>Thank you!</h3>
-            <p class="sub-headings">
-              Thanks for confirming your subscription! We hope you have fun
-              using our platform. If you ever need support, please feel free
-              email us at support@loremgaming.com.
-            </p>
-          </div>
-        </c-carousel-item>
-      </c-carousel-inner>
-    </c-carousel>
+      <ng-template ngbSlide>
+        <div class="form-step final">
+          <!-- icon -->
+          <h3>Thank you!</h3>
+          <p class="sub-headings">
+            Thanks for confirming your subscription! We hope you have fun using
+            our platform. If you ever need support, please feel free email us at
+            support@loremgaming.com.
+          </p>
+          <button
+            pButton
+            [disabled]="btnDisabled"
+            type="button"
+            label="Reset"
+            icon="pi pi-reload"
+            class="p-button-text p-button-secondary"
+            (click)="onReset()"
+          ></button>
+        </div>
+      </ng-template>
+    </ngb-carousel>
   </section>
 
-  <section class="form-controls">
+  <section class="form-controls" *ngIf="carouselIndex < 4">
     <button
       pButton
+      [disabled]="btnDisabled"
       type="button"
       label="Go Back"
+      [ngClass]="{ hidden: carouselIndex === 0 }"
       class="p-button-text p-button-secondary"
+      (click)="onBack()"
     ></button>
     <button
       pButton
+      [disabled]="btnDisabled"
       type="button"
-      label="Next Step / Confirm"
-      class="p-button-secondary"
+      label="{{ carouselIndex === 3 ? 'Confirm' : 'Next Step' }}"
+      [ngClass]="
+        carouselIndex === 3 ? 'p-button-primary' : 'p-button-secondary'
+      "
+      (click)="onNext()"
     ></button>
   </section>
 </div>

@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
 :root {
   // variables
   --tarnsition-duration: 300ms;
@@ -46,6 +49,18 @@ body {
 
 h3 {
   font-size: 1.75rem;
+  font-weight: 700;
   margin-block: 0.6em;
   color: var(--marine-blue);
+}
+
+button {
+  font-family: "Ubuntu" !important;
+  opacity: 1;
+  transition: opacity var(--tarnsition-duration);
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }

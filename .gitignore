@@ -40,3 +40,14 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Frontend Mentor
+*.sketch
+*.fig
+*.xd
+.prettierignore
+/design
+index-old.html
+style-guide.md
+README-original.md
+README-template.md

@@ -35,6 +35,7 @@ aside.side-steps {
       border: 1px solid var(--white);
       display: grid;
       place-items: center;
+      transition: background var(--tarnsition-duration);
 
       &::after {
         content: counter(step-counter);
@@ -43,7 +44,6 @@ aside.side-steps {
 
     &.active .step-number {
       background-color: var(--light-blue);
-      transition: background var(--tarnsition-duration);
       color: var(--marine-blue);
       border: none;
     }
@@ -74,7 +74,10 @@ section.form-controls {
   grid-area: controls;
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
+
+  .next-button {
+    margin-inline-start: auto;
+  }
 }
 
 // MEDIA QUERIES

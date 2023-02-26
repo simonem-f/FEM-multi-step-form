@@ -1,27 +1,27 @@
 <div class="multi-step-container">
   <aside class="side-steps">
-    <div class="side-step active">
+    <div class="side-step" [ngClass]="{ active: carouselIndex === 0 }">
       <div class="step-number"></div>
       <div class="step-label">
         <div>step</div>
         <div>your info</div>
       </div>
     </div>
-    <div class="side-step">
+    <div class="side-step" [ngClass]="{ active: carouselIndex === 1 }">
       <div class="step-number"></div>
       <div class="step-label">
         <div>step</div>
         <div>select plan</div>
       </div>
     </div>
-    <div class="side-step">
+    <div class="side-step" [ngClass]="{ active: carouselIndex === 2 }">
       <div class="step-number"></div>
       <div class="step-label">
         <div>step</div>
         <div>add-ons</div>
       </div>
     </div>
-    <div class="side-step">
+    <div class="side-step" [ngClass]="{ active: carouselIndex >= 3 }">
       <div class="step-number"></div>
       <div class="step-label">
         <div>step</div>
@@ -93,8 +93,8 @@
             [disabled]="btnDisabled"
             type="button"
             label="Reset"
-            icon="pi pi-reload"
-            class="p-button-text p-button-secondary"
+            icon="pi pi-undo"
+            class="carousel-button reset-button p-button-text p-button-secondary"
             (click)="onReset()"
           ></button>
         </div>
@@ -108,8 +108,9 @@
       [disabled]="btnDisabled"
       type="button"
       label="Go Back"
+      *ngIf="carouselIndex !== 0"
       [ngClass]="{ hidden: carouselIndex === 0 }"
-      class="p-button-text p-button-secondary"
+      class="carousel-button prev-button p-button-text p-button-secondary"
       (click)="onBack()"
     ></button>
     <button
@@ -120,6 +121,7 @@
       [ngClass]="
         carouselIndex === 3 ? 'p-button-primary' : 'p-button-secondary'
       "
+      class="carousel-button next-button"
       (click)="onNext()"
     ></button>
   </section>

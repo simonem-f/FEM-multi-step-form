@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   onReset(): void {
-    this.carousel.next();
+    this.carousel.select('info');
     this.carouselIndex = 0;
   }
 }

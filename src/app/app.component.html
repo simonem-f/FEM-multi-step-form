@@ -39,7 +39,7 @@
       (slid)="onSlideEnd()"
       (slide)="onSlideStart()"
     >
-      <ng-template ngbSlide>
+      <ng-template ngbSlide [id]="'info'">
         <div class="form-step">
           <h3>Personal info</h3>
           <p class="sub-headings">
@@ -49,7 +49,7 @@
         </div>
       </ng-template>
 
-      <ng-template ngbSlide>
+      <ng-template ngbSlide [id]="'plan'">
         <div class="form-step">
           <h3>Select your plan</h3>
           <p class="sub-headings">
@@ -59,7 +59,7 @@
         </div>
       </ng-template>
 
-      <ng-template ngbSlide>
+      <ng-template ngbSlide [id]="'add-ons'">
         <div class="form-step">
           <h3>Pick add-ons</h3>
           <p class="sub-headings">
@@ -69,7 +69,7 @@
         </div>
       </ng-template>
 
-      <ng-template ngbSlide>
+      <ng-template ngbSlide [id]="'summary'">
         <div class="form-step">
           <h3>Finishing up</h3>
           <p class="sub-headings">
@@ -79,7 +79,7 @@
         </div>
       </ng-template>
 
-      <ng-template ngbSlide>
+      <ng-template ngbSlide [id]="'completed'">
         <div class="form-step final">
           <!-- icon -->
           <h3>Thank you!</h3>

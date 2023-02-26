@@ -45,6 +45,7 @@ Thumbs.db
 *.sketch
 *.fig
 *.xd
+*.ttf
 .prettierignore
 /design
 index-old.html

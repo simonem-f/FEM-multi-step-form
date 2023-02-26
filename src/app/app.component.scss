@@ -1,0 +1,18 @@
+// STEP NUMBERS
+.side-step {
+  counter-increment: step-counter;
+  text-transform: uppercase;
+
+  .step-number::after {
+    content: counter(step-counter);
+  }
+  .step-label {
+    :first-child::after {
+      content: " " counter(step-counter);
+    }
+  }
+}
+
+// STEP FORMS
+
+// STEP CONTROLS

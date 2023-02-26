@@ -31,49 +31,75 @@
   </aside>
 
   <section class="form-section">
-    <div class="form-step">
-      <h3>Personal info</h3>
-      <p class="sub-headings">
-        Please provide your name, email address, and phone number.
-      </p>
-      <!-- form -->
-    </div>
+    <c-carousel transition="slide">
+      <c-carousel-inner>
+        <c-carousel-item>
+          <div class="form-step">
+            <h3>Personal info</h3>
+            <p class="sub-headings">
+              Please provide your name, email address, and phone number.
+            </p>
+            <!-- form -->
+          </div>
+        </c-carousel-item>
 
-    <div class="form-step">
-      <h3>Select your plan</h3>
-      <p class="sub-headings">
-        You have the option of monthly or yearly billing.
-      </p>
-      <!-- form -->
-    </div>
+        <c-carousel-item>
+          <div class="form-step">
+            <h3>Select your plan</h3>
+            <p class="sub-headings">
+              You have the option of monthly or yearly billing.
+            </p>
+            <!-- form -->
+          </div>
+        </c-carousel-item>
 
-    <div class="form-step">
-      <h3>Pick add-ons</h3>
-      <p class="sub-headings">Add-ons help enhance your gaming experience.</p>
-      <!-- form -->
-    </div>
+        <c-carousel-item>
+          <div class="form-step">
+            <h3>Pick add-ons</h3>
+            <p class="sub-headings">
+              Add-ons help enhance your gaming experience.
+            </p>
+            <!-- form -->
+          </div>
+        </c-carousel-item>
 
-    <div class="form-step">
-      <h3>Finishing up</h3>
-      <p class="sub-headings">
-        Double-check everything looks OK before confirming.
-      </p>
-      <!-- form -->
-    </div>
+        <c-carousel-item>
+          <div class="form-step">
+            <h3>Finishing up</h3>
+            <p class="sub-headings">
+              Double-check everything looks OK before confirming.
+            </p>
+            <!-- form -->
+          </div>
+        </c-carousel-item>
 
-    <div class="form-step final">
-      <!-- icon -->
-      <h3>Thank you!</h3>
-      <p class="sub-headings">
-        Thanks for confirming your subscription! We hope you have fun using our
-        platform. If you ever need support, please feel free email us at
-        support@loremgaming.com.
-      </p>
-    </div>
+        <c-carousel-item>
+          <div class="form-step final">
+            <!-- icon -->
+            <h3>Thank you!</h3>
+            <p class="sub-headings">
+              Thanks for confirming your subscription! We hope you have fun
+              using our platform. If you ever need support, please feel free
+              email us at support@loremgaming.com.
+            </p>
+          </div>
+        </c-carousel-item>
+      </c-carousel-inner>
+    </c-carousel>
   </section>
 
   <section class="form-controls">
-    <button>Go Back</button>
-    <button>Next Step / Confirm</button>
+    <button
+      pButton
+      type="button"
+      label="Go Back"
+      class="p-button-text p-button-secondary"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Next Step / Confirm"
+      class="p-button-secondary"
+    ></button>
   </section>
 </div>

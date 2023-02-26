@@ -1,18 +1,116 @@
-// STEP NUMBERS
-.side-step {
-  counter-increment: step-counter;
-  text-transform: uppercase;
+// PAGE LAYOUT
+.container {
+  display: grid;
+  padding: 1rem;
+  min-height: 100dvh;
+  grid-auto-rows: auto 1fr auto;
+  grid-template-areas:
+    "steps"
+    "form"
+    "controls";
+}
 
-  .step-number::after {
-    content: counter(step-counter);
-  }
-  .step-label {
-    :first-child::after {
-      content: " " counter(step-counter);
+// STEP NUMBERS
+aside.side-steps {
+  grid-area: steps;
+  background-image: url("/assets/images/bg-sidebar-mobile.svg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  .side-step {
+    counter-increment: step-counter;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.75rem;
+
+    .step-number {
+      width: 2rem;
+      aspect-ratio: 1;
+      border-radius: 100vh;
+      border: 1px solid var(--white);
+      display: grid;
+      place-items: center;
+
+      &::after {
+        content: counter(step-counter);
+      }
+    }
+
+    &.active .step-number {
+      background-color: var(--light-blue);
+      color: var(--marine-blue);
+      border: none;
+    }
+
+    .step-label {
+      :first-child {
+        opacity: 0.5;
+        font-weight: 400;
+      }
+      :first-child::after {
+        content: " " counter(step-counter);
+      }
+      :nth-child(2) {
+        letter-spacing: 1px;
+      }
     }
   }
 }
 
 // STEP FORMS
+section.form-section {
+  grid-area: form;
+}
 
 // STEP CONTROLS
+section.form-controls {
+  grid-area: controls;
+}
+
+// MEDIA QUERIES
+// DESKTOP
+@media screen and (width >= 600px) {
+  aside.side-steps {
+    width: clamp(230px, 20vw + 5rem, 280px);
+    padding: 2rem;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: start;
+    background-image: url("/assets/images/bg-sidebar-desktop.svg");
+    background-position: bottom;
+    border-radius: 10px;
+
+    .side-step {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+  }
+
+  .container {
+    grid-auto-columns: auto 1fr;
+    grid-template-areas:
+      "steps form"
+      "steps controls";
+  }
+}
+
+//MOBILE
+@media screen and (width < 600px) {
+  aside.side-steps {
+    padding-block: 3rem 8rem;
+
+    .step-label {
+      display: none;
+    }
+  }
+
+  section.form-section {
+    margin-top: -5rem;
+  }
+}

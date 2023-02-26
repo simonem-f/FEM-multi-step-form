@@ -64,3 +64,9 @@ button {
   visibility: hidden;
   opacity: 0;
 }
+
+@media screen and (width >= 700px) {
+  h3 {
+    font-size: 2rem;
+  }
+}

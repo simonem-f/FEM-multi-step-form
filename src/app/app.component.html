@@ -45,7 +45,72 @@
           <p class="sub-headings">
             Please provide your name, email address, and phone number.
           </p>
-          <!-- form -->
+          <form [formGroup]="infoForm" class="form-container">
+            <div
+              class="input-container"
+              *ngIf="infoForm.get('name') as nameControl"
+            >
+              <label for="name">Name: </label>
+              <span
+                class="validation-error"
+                *ngIf="nameControl.touched && nameControl.hasError('required')"
+              >
+                This field is required
+              </span>
+              <input
+                id="name"
+                type="text"
+                formControlName="name"
+                placeholder="e.g. Stephen King"
+              />
+            </div>
+
+            <div
+              class="input-container"
+              *ngIf="infoForm.get('email') as emailControl"
+            >
+              <label for="email-address">Email Address: </label>
+              <span
+                class="validation-error"
+                *ngIf="emailControl.touched && emailControl.errors"
+              >
+                {{
+                  emailControl.hasError("required")
+                    ? "This field is required"
+                    : "Invalid email"
+                }}
+              </span>
+              <input
+                id="email-address"
+                type="email"
+                formControlName="email"
+                placeholder="e.g. stephenking@lorem.com"
+              />
+            </div>
+
+            <div
+              class="input-container"
+              *ngIf="infoForm.get('phone') as phoneControl"
+            >
+              <label for="phone-number">Phone Number: </label>
+              <span
+                class="validation-error"
+                *ngIf="phoneControl.touched && phoneControl.errors"
+              >
+                {{
+                  phoneControl.hasError("required")
+                    ? "This field is required"
+                    : "Invalid phone number"
+                }}
+              </span>
+              <input
+                id="phone-number"
+                type="tel"
+                formControlName="phone"
+                placeholder="e.g. +1 234 567 890"
+              />
+            </div>
+          </form>
         </div>
       </ng-template>
 
@@ -115,7 +180,7 @@
     ></button>
     <button
       pButton
-      [disabled]="btnDisabled"
+      [disabled]="btnDisabled || infoForm.invalid"
       type="button"
       label="{{ carouselIndex === 3 ? 'Confirm' : 'Next Step' }}"
       [ngClass]="

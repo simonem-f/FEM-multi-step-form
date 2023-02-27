@@ -57,7 +57,7 @@ aside.side-steps {
         content: " " counter(step-counter);
       }
       :nth-child(2) {
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
       }
     }
   }
@@ -66,6 +66,30 @@ aside.side-steps {
 // STEP FORMS
 section.form-section {
   grid-area: form;
+
+  .form-container {
+    display: grid;
+    gap: 2rem;
+
+    .input-container {
+      display: flex;
+      flex-wrap: wrap;
+
+      .validation-error {
+        margin-inline-start: auto;
+        font-weight: 500;
+        color: var(--strawberry-red);
+      }
+
+      input {
+        width: 100%;
+
+        &.ng-touched.ng-invalid {
+          border-color: var(--strawberry-red);
+        }
+      }
+    }
+  }
 }
 
 // STEP CONTROLS

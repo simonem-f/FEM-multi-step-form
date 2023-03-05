@@ -31,9 +31,11 @@
   </aside>
 
   <section class="form-section">
+    <!-- temporary activeId for developing purposes, TODO: delete -->
     <ngb-carousel
       [keyboard]="false"
       [interval]="0"
+      [activeId]="'plan'"
       [showNavigationArrows]="false"
       [showNavigationIndicators]="false"
       (slid)="onSlideEnd()"
@@ -60,6 +62,7 @@
               <input
                 id="name"
                 type="text"
+                pInputText
                 formControlName="name"
                 placeholder="e.g. Stephen King"
               />
@@ -83,6 +86,7 @@
               <input
                 id="email-address"
                 type="email"
+                pInputText
                 formControlName="email"
                 placeholder="e.g. stephenking@lorem.com"
               />
@@ -106,6 +110,7 @@
               <input
                 id="phone-number"
                 type="tel"
+                pInputText
                 formControlName="phone"
                 placeholder="e.g. +1 234 567 890"
               />
@@ -120,7 +125,43 @@
           <p class="sub-headings">
             You have the option of monthly or yearly billing.
           </p>
-          <!-- form -->
+          <form [formGroup]="planForm" class="form-container">
+            <p-selectButton [options]="availablePlans" formControlName="plan">
+              <ng-template let-item>
+                <div class="plan-container">
+                  <img
+                    src="{{ 'assets/images/' + item.imgUrl }}"
+                    alt="{{item.label + 'plan icon'}"
+                  />
+                  <div class="plan-description">
+                    <p class="p-heading">
+                      {{ item.label | titlecase }}
+                    </p>
+                    <p class="sub-p-heading">
+                      {{
+                        planForm.get("yearly")?.value
+                          ? item.yearPrice
+                          : item.monthPrice
+                      }}
+                    </p>
+                    <p class="" *ngIf="planForm.get('yearly')?.value">
+                      2 months free
+                    </p>
+                  </div>
+                </div>
+              </ng-template>
+            </p-selectButton>
+
+            <div class="switch-contaienr bg-neutral">
+              <span [ngClass]="{ active: !planForm.get('yearly')?.value }"
+                >Monthly</span
+              >
+              <p-inputSwitch formControlName="yearly"></p-inputSwitch>
+              <span [ngClass]="{ active: planForm.get('yearly')?.value }"
+                >Yearly</span
+              >
+            </div>
+          </form>
         </div>
       </ng-template>
 

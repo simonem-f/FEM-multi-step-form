@@ -3,6 +3,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
 
+type Plan = {
+  id: number;
+  label: string;
+  monthPrice: number;
+  yearPrice: number;
+  imgUrl: string;
+};
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,15 +31,37 @@ export class AppComponent implements OnInit {
       [Validators.required, Validators.pattern(new RegExp('^\\+?\\d{9,11}$'))],
     ],
   });
-  public yearly = false;
-  public plan: 1 | 2 | 3 = 1;
+
+  public availablePlans: Plan[] = [
+    {
+      id: 1,
+      label: 'Arcade',
+      monthPrice: 9,
+      yearPrice: 90,
+      imgUrl: 'icon-arcade.svg',
+    },
+    {
+      id: 2,
+      label: 'Advanced',
+      monthPrice: 12,
+      yearPrice: 120,
+      imgUrl: 'icon-advanced.svg',
+    },
+    {
+      id: 3,
+      label: 'Pro',
+      monthPrice: 15,
+      yearPrice: 150,
+      imgUrl: 'icon-pro.svg',
+    },
+  ];
+
+  public planForm = this.fb.group({
+    plan: [this.availablePlans[0], Validators.required],
+    yearly: [false],
+  });
   //public addOns = [];
 
-  public availablePlans = [
-    { id: 1, label: 'Arcade', monthPrice: 9, yearPrice: 90 },
-    { id: 2, label: 'Advanced', monthPrice: 12, yearPrice: 120 },
-    { id: 3, label: 'Pro', monthPrice: 15, yearPrice: 150 },
-  ];
   public availableAddOns = [
     {
       service: 'Online service',

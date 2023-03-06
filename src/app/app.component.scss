@@ -71,6 +71,7 @@ section.form-section {
     display: grid;
     gap: 2rem;
 
+    // STEP 1
     .input-container {
       display: flex;
       flex-wrap: wrap;
@@ -90,10 +91,14 @@ section.form-section {
       }
     }
 
-    //.plan-container {
-    //  display: grid;
-    //  gap: 0.5rem;
-    //}
+    // STEP 2
+    .plan-container {
+    }
+
+    // STEP 3
+    .extras-price {
+      margin-inline-start: auto;
+    }
   }
 }
 

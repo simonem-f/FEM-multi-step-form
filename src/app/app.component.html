@@ -31,11 +31,9 @@
   </aside>
 
   <section class="form-section">
-    <!-- temporary activeId for developing purposes, TODO: delete -->
     <ngb-carousel
       [keyboard]="false"
       [interval]="0"
-      [activeId]="'plan'"
       [showNavigationArrows]="false"
       [showNavigationIndicators]="false"
       (slid)="onSlideEnd()"
@@ -125,9 +123,10 @@
           <p class="sub-headings">
             You have the option of monthly or yearly billing.
           </p>
+
           <form [formGroup]="planForm" class="form-container">
-            <p-selectButton [options]="availablePlans" formControlName="plan">
-              <ng-template let-item>
+            <p-listbox [options]="availablePlans" formControlName="plan">
+              <ng-template let-item pTemplate="item">
                 <div class="plan-container">
                   <img
                     src="{{ 'assets/images/' + item.imgUrl }}"
@@ -150,7 +149,7 @@
                   </div>
                 </div>
               </ng-template>
-            </p-selectButton>
+            </p-listbox>
 
             <div class="switch-contaienr bg-neutral">
               <span [ngClass]="{ active: !planForm.get('yearly')?.value }"
@@ -172,6 +171,34 @@
             Add-ons help enhance your gaming experience.
           </p>
           <!-- form -->
+          <form [formGroup]="addOnsForm" class="form-container">
+            <p-listbox
+              [multiple]="true"
+              [checkbox]="true"
+              [showToggleAll]="false"
+              [options]="availableAddOns"
+              formControlName="addOns"
+            >
+              <ng-template let-item pTemplate="item">
+                <div class="extras-description">
+                  <p class="p-heading">
+                    {{ item.service }}
+                  </p>
+                  <p class="sub-p-heading">
+                    {{ item.description }}
+                  </p>
+                </div>
+                <p class="extras-price">
+                  +
+                  {{
+                    planForm.get("yearly")?.value
+                      ? item.yearPrice
+                      : item.monthPrice
+                  }}
+                </p>
+              </ng-template>
+            </p-listbox>
+          </form>
         </div>
       </ng-template>
 
@@ -219,9 +246,11 @@
       class="carousel-button prev-button p-button-text p-button-secondary"
       (click)="onBack()"
     ></button>
+    <!-- TODO: disable button if form invalid -->
+    <!--[disabled]="btnDisabled || infoForm.invalid"-->
     <button
       pButton
-      [disabled]="btnDisabled || infoForm.invalid"
+      [disabled]="btnDisabled"
       type="button"
       label="{{ carouselIndex === 3 ? 'Confirm' : 'Next Step' }}"
       [ngClass]="

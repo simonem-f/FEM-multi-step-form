@@ -3,13 +3,25 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
 
-type Plan = {
-  id: number;
-  label: string;
+type SubscriptionPrice = {
   monthPrice: number;
   yearPrice: number;
-  imgUrl: string;
 };
+
+type Plan =
+  | SubscriptionPrice
+  | {
+      id: number;
+      label: string;
+      imgUrl: string;
+    };
+
+type Extra =
+  | SubscriptionPrice
+  | {
+      service: string;
+      description: string;
+    };
 
 @Component({
   selector: 'app-root',
@@ -60,9 +72,11 @@ export class AppComponent implements OnInit {
     plan: [this.availablePlans[0], Validators.required],
     yearly: [false],
   });
-  //public addOns = [];
+  public addOnsForm = this.fb.group({
+    addOns: [[]],
+  });
 
-  public availableAddOns = [
+  public availableAddOns: Extra[] = [
     {
       service: 'Online service',
       description: 'Access to multiplayer games',
@@ -76,7 +90,7 @@ export class AppComponent implements OnInit {
       yearPrice: 20,
     },
     {
-      service: 'Customizable Profilee',
+      service: 'Customizable Profile',
       description: 'Custom theme on your profile',
       monthPrice: 2,
       yearPrice: 20,

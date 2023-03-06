@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { SelectButtonModule } from 'primeng/selectbutton';
+import { ListboxModule } from 'primeng/listbox';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     ButtonModule,
     InputTextModule,
-    SelectButtonModule,
+    ListboxModule,
     InputSwitchModule,
     NgbModule,
     ReactiveFormsModule,

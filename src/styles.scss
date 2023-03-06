@@ -70,3 +70,22 @@ button {
     font-size: 2rem;
   }
 }
+
+// ----------- PRIME NG customization
+
+.p-listbox {
+  border: none;
+  border-radius: 0;
+
+  .p-listbox-list {
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+
+    .p-listbox-item {
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 10px;
+    }
+  }
+}

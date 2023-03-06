@@ -8,20 +8,16 @@ type SubscriptionPrice = {
   yearPrice: number;
 };
 
-type Plan =
-  | SubscriptionPrice
-  | {
-      id: number;
-      label: string;
-      imgUrl: string;
-    };
+type Plan = SubscriptionPrice & {
+  id: number;
+  label: string;
+  imgUrl: string;
+};
 
-type Extra =
-  | SubscriptionPrice
-  | {
-      service: string;
-      description: string;
-    };
+type Extra = SubscriptionPrice & {
+  service: string;
+  description: string;
+};
 
 @Component({
   selector: 'app-root',
@@ -30,6 +26,19 @@ type Extra =
 })
 export class AppComponent implements OnInit {
   @ViewChild(NgbCarousel) carousel: NgbCarousel = {} as NgbCarousel;
+
+  public get getTotal(): number {
+    const field = this.planForm.get('yearly')?.value
+      ? 'yearPrice'
+      : 'monthPrice';
+
+    const basePlan = this.planForm.get('plan')?.value;
+    const extraPrice =
+      this.addOnsForm
+        .get('addOns')
+        ?.value?.reduce((acc, curr) => acc + curr[field], 0) || 0;
+    return basePlan ? basePlan[field] + extraPrice : 0;
+  }
 
   public carouselIndex = 0;
   public btnDisabled = false;
@@ -73,7 +82,7 @@ export class AppComponent implements OnInit {
     yearly: [false],
   });
   public addOnsForm = this.fb.group({
-    addOns: [[]],
+    addOns: [[] as Extra[]],
   });
 
   public availableAddOns: Extra[] = [

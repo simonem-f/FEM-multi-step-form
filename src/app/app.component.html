@@ -208,7 +208,58 @@
           <p class="sub-headings">
             Double-check everything looks OK before confirming.
           </p>
-          <!-- form -->
+          <div class="summary-container">
+            <div class="summary-detail">
+              <div class="summary-plan">
+                <ng-container
+                  *ngIf="planForm.get('plan')?.value as selectedPlan"
+                >
+                  <div>
+                    <p class="p-heading">
+                      {{
+                        selectedPlan.label +
+                          " (" +
+                          (planForm.get("yearly")?.value
+                            ? "Yearly"
+                            : "Monthly") +
+                          ")"
+                      }}
+                    </p>
+                    <a class="p-sub-heading" href="">Change</a>
+                  </div>
+                  <span>{{
+                    planForm.get("yearly")?.value
+                      ? selectedPlan.yearPrice
+                      : selectedPlan.monthPrice
+                  }}</span>
+                </ng-container>
+              </div>
+              <ng-container *ngIf="addOnsForm.get('addOns')?.value as addons">
+                <hr *ngIf="addons.length" />
+                <div class="summary-extra" *ngFor="let extra of addons">
+                  <span>{{ extra.service }}</span>
+                  <span>{{
+                    planForm.get("yearly")?.value
+                      ? extra.yearPrice
+                      : extra.monthPrice
+                  }}</span>
+                </div>
+              </ng-container>
+            </div>
+
+            <div class="summary-total">
+              <span>
+                {{
+                  "Total (per " +
+                    (planForm.get("yearly")?.value ? "year" : "month") +
+                    ")"
+                }}
+              </span>
+              <span>
+                {{ getTotal }}
+              </span>
+            </div>
+          </div>
         </div>
       </ng-template>
 

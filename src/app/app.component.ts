@@ -125,5 +125,13 @@ export class AppComponent implements OnInit {
   onReset(): void {
     this.carousel.select('info');
     this.carouselIndex = 0;
+
+    // reset forms
+    this.infoForm.reset();
+    this.planForm.reset({
+      plan: this.availablePlans[0],
+      yearly: false,
+    });
+    this.addOnsForm.reset();
   }
 }

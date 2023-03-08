@@ -47,7 +47,7 @@
 body {
   font-size: 16px;
   font-family: "Ubuntu", sans-serif;
-  color: var(--cool-gray);
+  color: var(--secondary-color);
   margin: 0;
 }
 
@@ -65,12 +65,17 @@ button {
 
 label {
   color: var(--primary-color);
+  margin-block-end: 0.25rem;
 }
 
 .p-heading {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--primary-color);
+}
+
+.p-sub-heading {
+  color: var(--secondary-color);
 }
 
 .hidden {
@@ -98,7 +103,7 @@ $inputSwitchSliderOffBg: var(--primary-color);
   font-family: "Ubuntu", sans-serif;
   font-weight: 500;
   color: var(--primary-color);
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .p-listbox {

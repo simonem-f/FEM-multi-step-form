@@ -102,6 +102,11 @@ section.form-section {
       border-radius: var(--border-radius);
       gap: 1.5rem;
       padding-block: 0.75rem;
+
+      .active {
+        color: var(--primary-color);
+        font-weight: 500;
+      }
     }
 
     // STEP 3

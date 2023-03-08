@@ -55,7 +55,6 @@ h3 {
 }
 
 button {
-  font-family: "Ubuntu" !important;
   opacity: 1;
   transition: opacity var(--tarnsition-duration);
 }
@@ -72,6 +71,13 @@ button {
 }
 
 // ----------- PRIME NG customization
+
+$fontFamily: "Ubuntu";
+
+.p-component,
+.p-input-text {
+  font-family: "Ubuntu", sans-serif;
+}
 
 .p-listbox {
   border: none;

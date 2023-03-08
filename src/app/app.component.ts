@@ -2,22 +2,8 @@ import { PrimeNGConfig } from 'primeng/api';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
-
-type SubscriptionPrice = {
-  monthPrice: number;
-  yearPrice: number;
-};
-
-type Plan = SubscriptionPrice & {
-  id: number;
-  label: string;
-  imgUrl: string;
-};
-
-type Extra = SubscriptionPrice & {
-  service: string;
-  description: string;
-};
+import { Extra, Plan } from 'src/assets/om/om';
+import { EXTRAS, PLANS } from 'src/assets/data/form-data';
 
 @Component({
   selector: 'app-root',
@@ -27,86 +13,52 @@ type Extra = SubscriptionPrice & {
 export class AppComponent implements OnInit {
   @ViewChild(NgbCarousel) carousel: NgbCarousel = {} as NgbCarousel;
 
-  public get getTotal(): number {
+  get getTotal(): number {
     const field = this.planForm.get('yearly')?.value
       ? 'yearPrice'
       : 'monthPrice';
 
     const basePlan = this.planForm.get('plan')?.value;
-    const extraPrice =
-      this.addOnsForm
-        .get('addOns')
-        ?.value?.reduce((acc, curr) => acc + curr[field], 0) || 0;
+    const extras = this.addOnsForm.get('addOns')?.value;
+    const extraPrice = extras?.reduce((acc, curr) => acc + curr[field], 0) || 0;
     return basePlan ? basePlan[field] + extraPrice : 0;
   }
 
   public carouselIndex = 0;
   public btnDisabled = false;
+  public readonly availablePlans: Plan[] = PLANS;
+  public readonly availableAddOns: Extra[] = EXTRAS;
 
   // NG reactive forms
-  public infoForm = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    phone: [
-      '',
-      [Validators.required, Validators.pattern(new RegExp('^\\+?\\d{9,11}$'))],
-    ],
-  });
+  public infoForm;
+  public planForm;
+  public addOnsForm;
 
-  public availablePlans: Plan[] = [
-    {
-      id: 1,
-      label: 'Arcade',
-      monthPrice: 9,
-      yearPrice: 90,
-      imgUrl: 'icon-arcade.svg',
-    },
-    {
-      id: 2,
-      label: 'Advanced',
-      monthPrice: 12,
-      yearPrice: 120,
-      imgUrl: 'icon-advanced.svg',
-    },
-    {
-      id: 3,
-      label: 'Pro',
-      monthPrice: 15,
-      yearPrice: 150,
-      imgUrl: 'icon-pro.svg',
-    },
-  ];
+  constructor(private primengConfig: PrimeNGConfig, private fb: FormBuilder) {
+    // STEP 1 - info
+    this.infoForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(new RegExp('^\\+?\\d{9,11}$')),
+        ],
+      ],
+    });
 
-  public planForm = this.fb.group({
-    plan: [this.availablePlans[0], Validators.required],
-    yearly: [false],
-  });
-  public addOnsForm = this.fb.group({
-    addOns: [[] as Extra[]],
-  });
+    // STEP 2 - plan
+    this.planForm = this.fb.group({
+      plan: [this.availablePlans[0], Validators.required],
+      yearly: [false],
+    });
 
-  public availableAddOns: Extra[] = [
-    {
-      service: 'Online service',
-      description: 'Access to multiplayer games',
-      monthPrice: 1,
-      yearPrice: 10,
-    },
-    {
-      service: 'Larger storage',
-      description: 'Extra 1TB of cloud save',
-      monthPrice: 2,
-      yearPrice: 20,
-    },
-    {
-      service: 'Customizable Profile',
-      description: 'Custom theme on your profile',
-      monthPrice: 2,
-      yearPrice: 20,
-    },
-  ];
-
-  constructor(private primengConfig: PrimeNGConfig, private fb: FormBuilder) {}
+    // STEP 3 - add ons
+    this.addOnsForm = this.fb.group({
+      addOns: [[] as Extra[]],
+    });
+  }
 
   ngOnInit() {
     this.primengConfig.ripple = true;

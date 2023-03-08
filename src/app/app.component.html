@@ -225,7 +225,12 @@
                           ")"
                       }}
                     </p>
-                    <a class="p-sub-heading" href="">Change</a>
+                    <a
+                      class="p-sub-heading"
+                      href=""
+                      (click)="changePlan($event)"
+                      >Change</a
+                    >
                   </div>
                   <span>{{
                     planForm.get("yearly")?.value

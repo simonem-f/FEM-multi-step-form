@@ -143,4 +143,11 @@ export class AppComponent implements OnInit {
     });
     this.addOnsForm.reset();
   }
+
+  changePlan(event: MouseEvent): void {
+    // prevent default and go to plan form
+    event.preventDefault();
+    this.carousel.select('plan');
+    this.carouselIndex = 1;
+  }
 }

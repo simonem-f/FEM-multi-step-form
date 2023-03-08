@@ -5,6 +5,10 @@
 :root {
   // variables
   --tarnsition-duration: 500ms;
+  --border-radius: 10px;
+  --primary-color: var(--marine-blue);
+  --accent-color: var(--purplish-blue);
+  --secondary-color: var(--cool-gray);
 
   //neutral colors
   --cool-gray: hsl(231, 11%, 63%);
@@ -59,6 +63,16 @@ button {
   transition: opacity var(--tarnsition-duration);
 }
 
+label {
+  color: var(--primary-color);
+}
+
+.p-heading {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
 .hidden {
   visibility: hidden;
   opacity: 0;
@@ -73,10 +87,18 @@ button {
 // ----------- PRIME NG customization
 
 $fontFamily: "Ubuntu";
+//$inputTextColor: var(--primary-color);
+//$inputSwitchHeight: 1rem;
+$inputSwitchSliderOffBg: var(--primary-color);
 
-.p-component,
-.p-input-text {
+.p-component {
   font-family: "Ubuntu", sans-serif;
+}
+.p-inputtext {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 500;
+  color: var(--primary-color);
+  font-size: 18px;
 }
 
 .p-listbox {
@@ -93,5 +115,18 @@ $fontFamily: "Ubuntu";
       border-style: solid;
       border-radius: 10px;
     }
+  }
+}
+
+.p-inputswitch {
+  display: block !important;
+  transform: scale(0.8);
+
+  //&.p-focus .p-inputswitch-slider {
+  //  box-shadow: 0 0 0 0.2rem hsla(213, 96%, 50%, 0.8) !important;
+  //}
+
+  .p-inputswitch-slider {
+    background-color: var(--primary-color) !important;
   }
 }

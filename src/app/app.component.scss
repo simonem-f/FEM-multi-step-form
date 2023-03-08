@@ -92,7 +92,16 @@ section.form-section {
     }
 
     // STEP 2
-    .plan-container {
+    //.plan-container {
+    //}
+    .switch-container {
+      background-color: var(--alabaster);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: var(--border-radius);
+      gap: 1.5rem;
+      padding-block: 0.75rem;
     }
 
     // STEP 3
@@ -134,7 +143,7 @@ section.form-controls {
     justify-content: start;
     background-image: url("/assets/images/bg-sidebar-desktop.svg");
     background-position: bottom;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 
     .side-step {
       display: grid;
@@ -184,7 +193,7 @@ section.form-controls {
       background-color: var(--white);
       padding: 1.2rem;
       margin: 1rem;
-      border-radius: 10px;
+      border-radius: var(--border-radius);
       box-shadow: 0 5px 20px -3px rgba(120, 120, 120, 0.2);
     }
   }

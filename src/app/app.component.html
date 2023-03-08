@@ -50,7 +50,7 @@
               class="input-container"
               *ngIf="infoForm.get('name') as nameControl"
             >
-              <label for="name">Name: </label>
+              <label for="name">Name</label>
               <span
                 class="validation-error"
                 *ngIf="nameControl.touched && nameControl.hasError('required')"
@@ -70,7 +70,7 @@
               class="input-container"
               *ngIf="infoForm.get('email') as emailControl"
             >
-              <label for="email-address">Email Address: </label>
+              <label for="email-address">Email Address</label>
               <span
                 class="validation-error"
                 *ngIf="emailControl.touched && emailControl.errors"
@@ -94,7 +94,7 @@
               class="input-container"
               *ngIf="infoForm.get('phone') as phoneControl"
             >
-              <label for="phone-number">Phone Number: </label>
+              <label for="phone-number">Phone Number</label>
               <span
                 class="validation-error"
                 *ngIf="phoneControl.touched && phoneControl.errors"
@@ -155,7 +155,7 @@
               </ng-template>
             </p-listbox>
 
-            <div class="switch-contaienr bg-neutral">
+            <div class="switch-container bg-neutral">
               <span [ngClass]="{ active: !planForm.get('yearly')?.value }"
                 >Monthly</span
               >

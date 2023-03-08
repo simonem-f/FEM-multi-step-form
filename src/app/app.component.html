@@ -125,12 +125,16 @@
           </p>
 
           <form [formGroup]="planForm" class="form-container">
-            <p-listbox [options]="availablePlans" formControlName="plan">
+            <p-listbox
+              [options]="availablePlans"
+              formControlName="plan"
+              styleClass="plan-list-box"
+            >
               <ng-template let-item pTemplate="item">
                 <div class="plan-container">
                   <img
                     src="{{ 'assets/images/' + item.imgUrl }}"
-                    alt="{{item.label + 'plan icon'}"
+                    alt="{{ item.label + 'plan icon' }}"
                   />
                   <div class="plan-description">
                     <p class="p-heading">

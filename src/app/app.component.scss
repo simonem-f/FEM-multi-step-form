@@ -152,6 +152,15 @@ section.form-controls {
       padding: 1rem;
     }
   }
+
+  // STEP 2 - plan-list-box
+  :host ::ng-deep {
+    .plan-list-box {
+      .p-listbox-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
 }
 
 //MOBILE

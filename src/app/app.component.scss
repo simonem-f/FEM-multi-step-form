@@ -138,7 +138,7 @@ section.form-section {
         justify-content: space-between;
         align-items: center;
 
-        :last-child {
+        > :last-child {
           color: var(--primary-color);
         }
       }
@@ -150,6 +150,7 @@ section.form-section {
       align-items: center;
 
       :last-child {
+        font-size: 1.25rem;
         font-weight: 700;
         color: #6d28d9;
       }

@@ -310,11 +310,9 @@
       class="carousel-button prev-button p-button-text p-button-secondary"
       (click)="onBack()"
     ></button>
-    <!-- TODO: disable button if form invalid -->
-    <!--[disabled]="btnDisabled || infoForm.invalid"-->
     <button
       pButton
-      [disabled]="btnDisabled"
+      [disabled]="btnDisabled || infoForm.invalid"
       type="button"
       label="{{ carouselIndex === 3 ? 'Confirm' : 'Next Step' }}"
       [ngClass]="

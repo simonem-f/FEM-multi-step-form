@@ -42,7 +42,7 @@
       <ng-template ngbSlide [id]="'info'">
         <div class="form-step">
           <h3>Personal info</h3>
-          <p class="sub-headings">
+          <p class="p-sub-heading">
             Please provide your name, email address, and phone number.
           </p>
           <form [formGroup]="infoForm" class="form-container">
@@ -120,7 +120,7 @@
       <ng-template ngbSlide [id]="'plan'">
         <div class="form-step">
           <h3>Select your plan</h3>
-          <p class="sub-headings">
+          <p class="p-sub-heading">
             You have the option of monthly or yearly billing.
           </p>
 
@@ -140,14 +140,14 @@
                     <p class="p-heading">
                       {{ item.label | titlecase }}
                     </p>
-                    <p class="sub-p-heading">
-                      {{
+                    <p class="p-sub-heading">
+                      ${{
                         planForm.get("yearly")?.value
-                          ? item.yearPrice
-                          : item.monthPrice
+                          ? item.yearPrice + "/yr"
+                          : item.monthPrice + "/mo"
                       }}
                     </p>
-                    <p class="" *ngIf="planForm.get('yearly')?.value">
+                    <p class="p-smaller" *ngIf="planForm.get('yearly')?.value">
                       2 months free
                     </p>
                   </div>
@@ -156,13 +156,13 @@
             </p-listbox>
 
             <div class="switch-container bg-neutral">
-              <span [ngClass]="{ active: !planForm.get('yearly')?.value }"
-                >Monthly</span
-              >
+              <span [ngClass]="{ active: !planForm.get('yearly')?.value }">
+                Monthly
+              </span>
               <p-inputSwitch formControlName="yearly"></p-inputSwitch>
-              <span [ngClass]="{ active: planForm.get('yearly')?.value }"
-                >Yearly</span
-              >
+              <span [ngClass]="{ active: planForm.get('yearly')?.value }">
+                Yearly
+              </span>
             </div>
           </form>
         </div>
@@ -171,7 +171,7 @@
       <ng-template ngbSlide [id]="'add-ons'">
         <div class="form-step">
           <h3>Pick add-ons</h3>
-          <p class="sub-headings">
+          <p class="p-sub-heading">
             Add-ons help enhance your gaming experience.
           </p>
           <!-- form -->
@@ -188,16 +188,15 @@
                   <p class="p-heading">
                     {{ item.service }}
                   </p>
-                  <p class="sub-p-heading">
+                  <p class="p-sub-heading">
                     {{ item.description }}
                   </p>
                 </div>
                 <p class="extras-price">
-                  +
-                  {{
+                  +${{
                     planForm.get("yearly")?.value
-                      ? item.yearPrice
-                      : item.monthPrice
+                      ? item.yearPrice + "/yr"
+                      : item.monthPrice + "/mo"
                   }}
                 </p>
               </ng-template>
@@ -209,7 +208,7 @@
       <ng-template ngbSlide [id]="'summary'">
         <div class="form-step">
           <h3>Finishing up</h3>
-          <p class="sub-headings">
+          <p class="p-sub-heading">
             Double-check everything looks OK before confirming.
           </p>
           <div class="summary-container">
@@ -236,22 +235,26 @@
                       >Change</a
                     >
                   </div>
-                  <span>{{
-                    planForm.get("yearly")?.value
-                      ? selectedPlan.yearPrice
-                      : selectedPlan.monthPrice
-                  }}</span>
+                  <span>
+                    ${{
+                      planForm.get("yearly")?.value
+                        ? selectedPlan.yearPrice + "/yr"
+                        : selectedPlan.monthPrice + "/mo"
+                    }}</span
+                  >
                 </ng-container>
               </div>
               <ng-container *ngIf="addOnsForm.get('addOns')?.value as addons">
                 <hr *ngIf="addons.length" />
                 <div class="summary-extra" *ngFor="let extra of addons">
                   <span>{{ extra.service }}</span>
-                  <span>{{
-                    planForm.get("yearly")?.value
-                      ? extra.yearPrice
-                      : extra.monthPrice
-                  }}</span>
+                  <span
+                    >+${{
+                      planForm.get("yearly")?.value
+                        ? extra.yearPrice + "/yr"
+                        : extra.monthPrice + "/mo"
+                    }}</span
+                  >
                 </div>
               </ng-container>
             </div>
@@ -265,7 +268,8 @@
                 }}
               </span>
               <span>
-                {{ getTotal }}
+                ${{ getTotal
+                }}{{ planForm.get("yearly")?.value ? "/yr" : "/mo" }}
               </span>
             </div>
           </div>
@@ -276,7 +280,7 @@
         <div class="form-step final">
           <img src="assets/images/icon-thank-you.svg" alt="thank-you icon" />
           <h3>Thank you!</h3>
-          <p class="sub-headings">
+          <p class="p-sub-heading">
             Thanks for confirming your subscription! We hope you have fun using
             our platform. If you ever need support, please feel free email us at
             support@loremgaming.com.

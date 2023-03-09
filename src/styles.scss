@@ -69,13 +69,18 @@ label {
 }
 
 .p-heading {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--primary-color);
 }
 
 .p-sub-heading {
   color: var(--secondary-color);
+}
+
+.p-smaller {
+  color: var(--primary-color);
+  font-size: 14px;
 }
 
 .hidden {

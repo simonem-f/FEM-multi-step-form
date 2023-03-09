@@ -52,10 +52,14 @@ body {
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
-  margin-block: 0.6em;
+  margin-block: 0.5em;
   color: var(--marine-blue);
+}
+
+p {
+  margin-block-end: 3px;
 }
 
 button {
@@ -69,8 +73,8 @@ label {
 }
 
 .p-heading {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 700;
   color: var(--primary-color);
 }
 
@@ -88,9 +92,13 @@ label {
   opacity: 0;
 }
 
-@media screen and (width >= 700px) {
+h3 + .p-sub-heading {
+  margin-block-end: 3rem;
+}
+
+@media screen and (width >= 730px) {
   h3 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -121,6 +129,7 @@ $inputSwitchSliderOffBg: var(--primary-color);
     gap: 1rem;
 
     .p-listbox-item {
+      padding: 1rem;
       border-width: 1px;
       border-style: solid;
       border-radius: var(--border-radius);

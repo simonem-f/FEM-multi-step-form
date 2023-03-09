@@ -119,6 +119,31 @@ $inputSwitchSliderOffBg: var(--primary-color);
   font-size: 17px;
 }
 
+.p-button {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+
+  &.p-button-primary,
+  &.p-button-primary.p-button:enabled:hover:not(.p-button-text) {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+
+  &.p-button-secondary,
+  &.p-button-secondary.p-button:enabled:hover:not(.p-button-text) {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  &.p-button:enabled:hover {
+    opacity: 0.7;
+  }
+
+  .p-button-label {
+    font-weight: 400;
+  }
+}
+
 .p-listbox {
   border: none;
   border-radius: 0;

@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/fem-multistep"
+  publish = "dist/multi-step-form"
   command = "ng build --configuration production"
 [[redirects]]
   from = "/*"

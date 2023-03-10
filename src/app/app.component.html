@@ -323,3 +323,60 @@
     ></button>
   </section>
 </div>
+
+<!-- CREDITS DIALOG -->
+<p-dialog
+  header="Multistep Form"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [(visible)]="displayDialog"
+>
+  <div class="credits-dialog">
+    <p>This is a Frontend Mentor project</p>
+    <p>
+      Go to:
+      <a
+        target="_blank"
+        href="https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ"
+      >
+        multi-step-form challenge</a
+      >. <br />
+      Go to: <a target="_blank" href="...">my solution on FEM</a>.<br />
+      Go to:
+      <a target="_blank" href="...">this solution on GitHub</a>.
+    </p>
+    <p class="icons-container">
+      <a
+        target="_blank"
+        href="https://www.linkedin.com/in/simone-marco-fumagalli/"
+      >
+        <img
+          class="icon-linkedin"
+          src="https://icon.horse/icon/linkedin.com"
+          alt="Linkedin Logo"
+        />
+      </a>
+      <a target="_blank" href="https://www.frontendmentor.io/profile/simonem-f">
+        <img
+          class="icon-fem"
+          src="../assets/images/favicon-32x32.png"
+          alt="Frontend Mentor Logo"
+        />
+      </a>
+      <a target="_blank" href="https://github.com/simonem-f">
+        <img
+          class="icon-git-hub"
+          src="https://icon.horse/icon/github.com"
+          alt="GitHub Logo"
+        />
+      </a>
+    </p>
+    <p>Simone Marco Fumagalli - 2023</p>
+  </div>
+</p-dialog>
+
+<div
+  (click)="displayDialog = true"
+  class="pi pi-info-circle credits-button"
+></div>

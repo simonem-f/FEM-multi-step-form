@@ -269,3 +269,47 @@ section.form-controls {
     background-color: var(--white);
   }
 }
+
+// credits button & dialog style
+.credits-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--primary-color);
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+@media screen and (width < 730px) {
+  .credits-button {
+    color: var(--white);
+  }
+}
+
+.credits-dialog {
+  p {
+    margin-block-end: 1rem;
+  }
+  .icons-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    background: var(--alabaster);
+    padding: 5px;
+    border-radius: var(--border-radius);
+
+    img {
+      width: 1.5rem;
+
+      &.icon-git-hub {
+        border-radius: 100vw;
+      }
+    }
+  }
+
+  > :last-child {
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+  }
+}

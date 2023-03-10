@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ListboxModule } from 'primeng/listbox';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { DialogModule } from 'primeng/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component';
     InputTextModule,
     ListboxModule,
     InputSwitchModule,
+    DialogModule,
     NgbModule,
     ReactiveFormsModule,
   ],

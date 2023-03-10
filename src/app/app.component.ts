@@ -34,6 +34,8 @@ export class AppComponent implements OnInit {
   public planForm;
   public addOnsForm;
 
+  public displayDialog = false;
+
   constructor(private primengConfig: PrimeNGConfig, private fb: FormBuilder) {
     // STEP 1 - info
     this.infoForm = this.fb.group({

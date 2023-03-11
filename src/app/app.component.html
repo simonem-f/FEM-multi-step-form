@@ -290,6 +290,7 @@
             [disabled]="btnDisabled"
             type="button"
             label="Reset"
+            aria-label="Reset form"
             icon="pi pi-undo"
             class="carousel-button reset-button p-button-text p-button-secondary"
             (click)="onReset()"
@@ -305,6 +306,7 @@
       [disabled]="btnDisabled"
       type="button"
       label="Go Back"
+      aria-label="Go Back"
       *ngIf="carouselIndex !== 0"
       [ngClass]="{ hidden: carouselIndex === 0 }"
       class="carousel-button prev-button p-button-text p-button-secondary"
@@ -315,6 +317,7 @@
       [disabled]="btnDisabled || infoForm.invalid"
       type="button"
       label="{{ carouselIndex === 3 ? 'Confirm' : 'Next Step' }}"
+      aria-label="Next"
       [ngClass]="
         carouselIndex === 3 ? 'p-button-primary' : 'p-button-secondary'
       "
